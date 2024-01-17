@@ -1,6 +1,13 @@
+using Catalog_For_Cars_Project_2024.Data;
+using Catalog_For_Cars_Project_2024.Data.Services;
+using Catalog_For_Cars_Project_2024.Data.Services.Brands;
+using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +31,24 @@ namespace Catalog_For_Cars_Project_2024
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            //DbContext configuration
+            services
+                .AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")))
+                .AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireUppercase = false;
+                })
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            //Services configuration
+            services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ICarService, CarService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +69,17 @@ namespace Catalog_For_Cars_Project_2024
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
+
+            //Seed databese
+            AppDbInitializer.Seed(app).GetAwaiter().GetResult();
         }
     }
 }
