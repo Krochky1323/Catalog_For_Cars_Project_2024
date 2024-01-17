@@ -1,5 +1,5 @@
-﻿using Cars_Catalog_Project.Models;
-using Cars_Catalog_Project.ViewModels;
+﻿using Catalog_For_Cars_Project_2024.Models;
+using Catalog_For_Cars_Project_2024.ViewModels;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cars_Catalog_Project.Data.Services
+namespace Catalog_For_Cars_Project_2024.Data.Services
 {
     public class CarService : ICarService
     {
