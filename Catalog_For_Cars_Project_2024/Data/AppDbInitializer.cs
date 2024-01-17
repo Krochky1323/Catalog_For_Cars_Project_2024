@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Catalog_For_Cars_Project_2024t.Data
+namespace Catalog_For_Cars_Project_2024.Data
 {
     public class AppDbInitializer
     {
