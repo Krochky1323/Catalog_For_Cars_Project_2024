@@ -1,4 +1,4 @@
-﻿using Cars_Catalog_Project.Data.Services.Brands;
+﻿using Catalog_For_Cars_Project_2024.Data.Services.Brands;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cars_Catalog_Project.Controllers
+namespace Catalog_For_Cars_Project_2024.Controllers
 {
     public class BrandController : Controller
     {
