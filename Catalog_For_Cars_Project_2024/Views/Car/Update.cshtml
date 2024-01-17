@@ -1,0 +1,83 @@
+﻿@model Catalog_For_Cars_Project_2024.ViewModels.CarFormViewModel
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<h4>Car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car.Id" />
+            <div class="form-group">
+                <label asp-for="Car.PictureOfCar" class="control-label"></label>
+                <input asp-for="Car.PictureOfCar" class="form-control" />
+                <span asp-validation-for="Car.PictureOfCar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Model" class="control-label"></label>
+                <input asp-for="Car.Model" class="form-control" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Price" class="control-label"></label>
+                <input asp-for="Car.Price" class="form-control" />
+                <span asp-validation-for="Car.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Year" class="control-label"></label>
+                <input asp-for="Car.Year" class="form-control" />
+                <span asp-validation-for="Car.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Power" class="control-label"></label>
+                <input asp-for="Car.Power" class="form-control" />
+                <span asp-validation-for="Car.Power" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Color" class="control-label"></label>
+                <input asp-for="Car.Color" class="form-control" />
+                <span asp-validation-for="Car.Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.BrandId" class="control-label"></label>
+                <select asp-for="Car.BrandId" class="form-control">
+                    @foreach (var Brand in Model.Brands)
+                    {
+                        <option value="@Brand.Id">
+                            @Brand.Name
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="Car.BrandId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.CategoryId" class="control-label"></label>
+                <select asp-for="Car.CategoryId" class="form-control">
+                    @foreach (var Category in Model.Categories)
+                    {
+                        <option value="@Category.Id">
+                            @Category.Name
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="Car.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
