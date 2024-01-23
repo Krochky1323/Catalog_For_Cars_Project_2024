@@ -1,4 +1,5 @@
 ﻿using Catalog_For_Cars_Project_2024.Models;
+using Catalog_For_Cars_Project_2024.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ namespace Catalog_For_Cars_Project_2024.Data.Services.Brands
 {
     public interface IBrandService
     {
-        IEnumerable<Brand> GetAllBrands();
-        Brand GetBrandById(int id);
+        Task<IEnumerable<Brand>> GetAllBrands();
+       public BrandFormViewModel GetBrandFormValues();
         void CreateBrand(Brand brand);
-        void UpdateBrand(Brand brand);
         void DeleteBrand(int id);
     }
 }

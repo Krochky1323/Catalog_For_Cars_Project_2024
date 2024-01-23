@@ -47,6 +47,7 @@ namespace Catalog_For_Cars_Project_2024.Controllers
         //
         public async Task<IActionResult> Update(Car car)
         {
+
             _carService.UpdateCar(car);
             return RedirectToAction(nameof(Index));
         }
