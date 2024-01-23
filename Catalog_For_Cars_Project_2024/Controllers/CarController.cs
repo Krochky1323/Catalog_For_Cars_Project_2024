@@ -69,7 +69,7 @@ namespace Catalog_For_Cars_Project_2024.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet("delete/{id}")]
+        [HttpGet("delete-car/{id}")]
         [Authorize(Roles = "Admin")]
 
         //изтриване на кола

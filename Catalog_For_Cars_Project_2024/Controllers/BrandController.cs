@@ -48,7 +48,7 @@ namespace Catalog_For_Cars_Project_2024.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet("delete/{id}")]
+        [HttpGet("delete-brand/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {

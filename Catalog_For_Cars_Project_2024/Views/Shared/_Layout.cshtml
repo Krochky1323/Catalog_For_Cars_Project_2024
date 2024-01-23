@@ -24,16 +24,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index"><i class="bi bi-car-front-fill"></i> Cars</a>
                             </li>
-
-
-                        }
-
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Create"><i class="bi bi-car-front-fill"></i> Create Car</a>
-                            </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index"><i class="bi bi-car-front-fill"></i> Categories</a>
                             </li>
@@ -41,16 +31,23 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Brand" asp-action="Index"><i class="bi bi-car-front-fill"></i> Brands</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                     <i class="bi bi-gear"></i> Management
-                                 </a>
 
-                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                     <a class="dropdown-item" asp-controller="Brand" asp-action="Create"><i class="bi bi-car-front-fill"></i>Create Brand</a>
-                                     <a class="dropdown-item" asp-controller="Category" asp-action="Create"> Create Categories</a>
-                                 </div>
-                             </li>
+                        }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-gear"></i> Management
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Car" asp-action="Create"><i class="bi bi-car-front-fill"></i> Create Car</a>
+                                    <a class="dropdown-item" asp-controller="Brand" asp-action="Create"><i class="bi bi-car-front-fill"></i>Create Brand</a>
+                                    <a class="dropdown-item" asp-controller="Category" asp-action="Create"> Create Categories</a>
+                                </div>
+                            </li>
                         }
 
                         <partial name="_LoginPartial" />

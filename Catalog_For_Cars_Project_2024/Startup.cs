@@ -1,6 +1,7 @@
 using Catalog_For_Cars_Project_2024.Data;
 using Catalog_For_Cars_Project_2024.Data.Services;
 using Catalog_For_Cars_Project_2024.Data.Services.Brands;
+using Catalog_For_Cars_Project_2024.Data.Services.Categories;
 using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,8 @@ namespace Catalog_For_Cars_Project_2024
             //Services configuration
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<ICarService, CarService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
 
         }
 
